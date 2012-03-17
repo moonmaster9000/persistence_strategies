@@ -1,10 +1,11 @@
-require_relative '../twitter'
+require 'spec_helper'
+require 'twitter'
 require 'ostruct'
 
 describe Twitter::User do
-  let(:user)          { Twitter::User.new           }
-  let(:tweet_factory) { -> do tweet end             }
-  let(:tweet)         { OpenStruct.new              }
+  let(:user)          { Twitter::User.new }
+  let(:tweet_factory) { -> do tweet end   }
+  let(:tweet)         { OpenStruct.new    }
 
   before do
     user.tweet_factory = tweet_factory
@@ -22,6 +23,11 @@ describe Twitter::User do
 
     it "associates the tweet with the user" do
       user.tweet("hi").user.should == user
+    end
+
+    it "saves the tweet" do
+      tweet.should_receive(:save!)
+      user.tweet("hi")
     end
   end
 end
