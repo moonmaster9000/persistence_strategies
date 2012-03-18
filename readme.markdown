@@ -1,15 +1,15 @@
 # Decoupling Persistence from your Domain
 
-In this README, I'll show you a simple way to isolate your business
-logic from your persistence concerns.
+In this README, I'll show you two simple ways to isolate your business
+logic from your persistence concerns. The first example uses inheritance
+and a naming convention; the second, mixins.
 
 However, I want you to walk through a refactoring to understand it. In
 general, I don't recommend starting with a pattern unless you know it _so
 well_ that refactoring into it would feel like a truly needless exercise.
 
-Note: you can browse the source code of this project to see a more
-fleshed out example of this approach, or clone and it and play with the
-code / run the tests yourself.
+Note: Checkout the
+[readme\_simple\_example](https://github.com/moonmaster9000/persistence_strategies/tree/master/readme_simple_example) directory for a working example of the code in this README. Or, checkout the [active\_record\_example](https://github.com/moonmaster9000/persistence_strategies/tree/master/active_record_example) directory for a larger example with both an in-memory persistence plugin _and_ an ActiveRecord persistence plugin. (Caveat: I've only tested this code on MRI 1.9.3-p125).
 
 ## Twitter
 
@@ -172,7 +172,7 @@ Is that really such a big deal? Maybe not. I mean, if you're cool with
 creating inflexible, tightly coupled systems, then carry on.
 
 There's all kinds of different ways to solve this problem. There's the
-"Rails Way" (pretend it's not a problem). There's the data mapper
+"Rails Way" - pretend it's not a problem ;-).  There's the data mapper
 pattern (described notably in Martin Fowler's "Patterns of Enterprise
 Application Architecture"). There's the Active Record pattern (of which the powerful ActiveRecord library is an implementation of). There's Avdi Grim's "fig leaf" approach described in his "Objects on Rails" book. There's Piotor Solnic's approach that has you pass in persistent objects into domain models. And I'm sure many, many more that I'm not aware of.
 
