@@ -6,7 +6,6 @@ module Twitter
       @tweet_factory.call.tap do |t|
         t.content = content
         t.user    = self
-        t.save!
       end
     end
   end

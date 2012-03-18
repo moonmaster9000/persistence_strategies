@@ -24,10 +24,5 @@ describe Twitter::User do
     it "associates the tweet with the user" do
       user.tweet("hi").user.should == user
     end
-
-    it "saves the tweet" do
-      tweet.should_receive(:save!)
-      user.tweet("hi")
-    end
   end
 end
