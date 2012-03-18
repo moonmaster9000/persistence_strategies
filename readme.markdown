@@ -18,7 +18,7 @@ following rspec spec:
 
 ```ruby
 require 'ostruct'
-require_relative '../twitter_user.rb'
+require_relative '../twitter_user'
 
 describe Twitter::User do
   let(:user)          { Twitter::User.new }
