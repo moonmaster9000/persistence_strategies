@@ -46,7 +46,7 @@ model to a Tweet model; instead, we'd simply like to inject a method for
 creating tweets into it at runtime. This makes it simpler to test, and
 makes our User model simpler to maintain. (If you'd like to learn more
 about this sort of dependency injection, I _highly_ recommend purchasing
-Avdi's ebook ["Objects on Rails"](http://objectonrails.com)).
+Avdi's ebook ["Objects on Rails"](http://objectsonrails.com)).
 
 Run the spec, watch it fail, then write some code until it passes. You
 might end up with something like this:
