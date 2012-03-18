@@ -174,7 +174,12 @@ creating inflexible, tightly coupled systems, then carry on.
 There's all kinds of different ways to solve this problem. There's the
 "Rails Way" - pretend it's not a problem ;-).  There's the data mapper
 pattern (described notably in Martin Fowler's "Patterns of Enterprise
-Application Architecture"). There's the Active Record pattern (of which the powerful ActiveRecord library is an implementation of). There's Avdi Grim's "fig leaf" approach described in his "Objects on Rails" book. There's Piotor Solnic's approach that has you pass in persistent objects into domain models. And I'm sure many, many more that I'm not aware of.
+Application Architecture"). There's the Active Record pattern (of which the powerful ActiveRecord library is an implementation of). There's Avdi Grim's "fig leaf" approach described in his "Objects on Rails" book. There's Piotr Solnica's compositional approach described [here](http://solnic.eu/2011/08/01/making-activerecord-models-thin.html). And I'm sure many, many more that I'm not aware of.
+
+All of those approaches have their merits. In terms of level of effort,
+the approach I'm about to show may be the simplest (well, except for the
+"Rails Way", of course), though it doesn't go as far with decoupling as
+the Data Mapper pattern or Solnica's method.
 
 Let's start by refactoring out the persistence into a seperate class:
 
