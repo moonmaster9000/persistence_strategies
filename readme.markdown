@@ -38,7 +38,7 @@ end
 ```
 
 Basically, we've written a spec that says a "user" should be able to
-tweet. Since that's the single most essential feature of the Twitter application, I thought it would makes sense to start with that. If we can't get this abstraction right, then we're doomed.
+tweet. Since that's the single most essential feature of the Twitter application, I thought it would make sense to start with that. If we can't get this abstraction right, then we're doomed.
 
 The "tweet\_factory" bit may seem a little odd. 
 Essentially, we don't want to tightly couple our User
