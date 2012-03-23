@@ -29,16 +29,12 @@ module Twitter
 
       private
       def find_by_username(username)
-        metadata = find_metadata_by_username(username)
+        metadata = UserMetadata.find_by_username(username)
         wrap_metadata(metadata) if metadata
       end
 
       def wrap_metadata(metadata)
         Twitter::User.new(metadata.name, metadata.username)
-      end
-
-      def find_metadata_by_username(username)
-        UserMetadata.find_by_username(username)
       end
     end
 
