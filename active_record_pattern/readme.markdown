@@ -1,7 +1,8 @@
-# Decoupling Persistence from your Domain
+# Decoupling Persistence from your Domain - with Active Record
 
 In this README, I'll show you two simple ways to isolate your business
-logic from your persistence concerns. The first example uses inheritance
+logic from your persistence concerns while still using the "Active
+Record" pattern. The first example uses inheritance
 and a naming convention; the second, mixins.
 
 However, I want you to walk through a refactoring to understand it. In
@@ -102,8 +103,9 @@ persistence?
 
 Clearly, before we can launch our app into the real world, we're going
 to need to persist our objects and retrieve them in various ways. Let's
-start by simply adding specs for saving users, and for finding all
-users.
+also assume we'd like to use the "Active Record" pattern for our
+persistence. We'll start with specs for saving users (`#save!`), and for finding all
+users (`.all`).
 
 ```ruby
 describe Twitter::User do
@@ -168,18 +170,12 @@ We have a problem. Originally, we started out our User spec by
 describing what a User actually does on Twitter (they tweet!). But now
 we've muddied up our domain with the concerns of our persistence layer.
 
-Is that really such a big deal? Maybe not. I mean, if you're cool with
-creating inflexible, tightly coupled systems, then carry on.
-
-There's all kinds of different ways to solve this problem. There's the
-"Rails Way" - pretend it's not a problem ;-).  There's the data mapper
-pattern (described notably in Martin Fowler's "Patterns of Enterprise
-Application Architecture"). There's the Active Record pattern (of which the powerful ActiveRecord library is an implementation of). There's Avdi Grim's "fig leaf" approach described in his "Objects on Rails" book. There's Piotr Solnica's compositional approach described [here](http://solnic.eu/2011/08/01/making-activerecord-models-thin.html). And I'm sure many, many more that I'm not aware of.
-
-All of those approaches have their merits. In terms of level of effort,
-the approach I'm about to show may be the simplest (well, except for the
-"Rails Way", of course), though it doesn't go as far with decoupling as
-the Data Mapper pattern or Solnica's method.
+On the one hand, there's really no way around it with the "Active
+Record" pattern. Yet with inheritance and a naming convention, there's a
+simple way to abstract away the details of the persistence layer,
+allowing us to develop the business logic and persistence layer
+independently, and even swap out different persistence solutions without
+affecting any of our domain objects.
 
 Let's start by refactoring out the persistence into a seperate class:
 
@@ -322,5 +318,5 @@ Twitter::User.send :include, Twitter::Persistence::User
 
 Now we no longer need to define an abstract persistence layer standin
 for testing our user domain model. The only problem with this approach is that it would likely make working with ORMs like
-ActiveRecord tricky, since they assume that they're bolted on to your
+the Rails ActiveRecord library tricky, since they assume that they're bolted on to your
 models with inheritance.
