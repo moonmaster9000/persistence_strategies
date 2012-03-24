@@ -1,5 +1,5 @@
-require 'spec_helper'
-require_relative 'persistence_spec'
+require_relative '../spec/spec_helper'
+require_relative '../spec/twitter/persistence'
 require 'active_record'
 require 'sqlite3'
 
