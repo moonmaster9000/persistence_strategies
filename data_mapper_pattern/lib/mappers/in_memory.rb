@@ -18,7 +18,8 @@ module Twitter
       end
 
       def persist!(user)
-        all << user unless find_by_username(user)
+        all.delete(user)
+        all << user
       end
 
       private

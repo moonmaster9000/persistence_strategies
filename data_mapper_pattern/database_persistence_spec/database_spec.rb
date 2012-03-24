@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative '../spec/spec_helper'
 require 'active_record'
 require 'sqlite3'
 
@@ -29,6 +29,6 @@ ActiveRecord::Base.connection.execute(
 
 require 'mappers/database'
 require 'ostruct'
-require_relative 'persistence'
+require_relative '../spec/mappers/persistence'
 
 PERSISTENCE_SPEC.call

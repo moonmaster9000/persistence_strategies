@@ -30,9 +30,9 @@ PERSISTENCE_SPEC = -> do
       end
 
       it "should update a user in .all if the user has already been persisted" do
-        user = OpenStruct.new name: "Foo Bar", username: "foobar"
+        user = Twitter::User.new "Foo Bar", "foobar"
         described_class.persist! user
-        user.name = "Foo YAR"
+        user = Twitter::User.new "Foo YAR", "foobar"
         described_class.persist! user
         described_class.find_by_username!("foobar").name.should == "Foo YAR"
       end
@@ -40,7 +40,7 @@ PERSISTENCE_SPEC = -> do
 
     describe "#truncate!" do
       it "should delete all users" do
-        user = OpenStruct.new name: "foo", username: "foobar"
+        user = Twitter::User.new "foo", "foobar"
         described_class.persist! user
         described_class.truncate!
         described_class.all.should be_empty

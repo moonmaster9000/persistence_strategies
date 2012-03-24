@@ -18,5 +18,11 @@ module Twitter
         t.user = self
       end
     end
+
+    private
+
+    def tweet_factory
+      @tweet_factory ||= Twitter::Tweet.public_method(:create)
+    end
   end
 end
